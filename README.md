@@ -110,22 +110,24 @@ VALUES
 
 **UserController**
 
-| URL | GET通信の /users |
+| 項目 | 概要 |
 | --- | --- |
-| 概要 | usersテーブルの一覧データをusers/list.htmlに表示する |
+| URL | GET通信の `/users` |
+| 処理内容 | usersテーブルの一覧データを`users/list.html`に表示する |
 
 **UserService**
 
-| メソッド名 | findAllUsers |
+| 項目 | 概要 |
 | --- | --- |
+| メソッド名 | findAllUsers |
 | 引数 | なし |
-| 概要 | usersテーブルの全データを返却する |
+| 処理内容 | usersテーブルの全データを返却する |
 
 **UserRepository**
 
 `users` テーブルを操作できるように修正する
 
-## 動作確認
+### 動作確認
 
 - URL `http://localhost:8080/users`でアクセスし、以下のようにusers/list.html表示されることを確認する。
 
@@ -148,27 +150,28 @@ VALUES
 
     **UserController**
 
-    | URL | GET通信の /users/add |
+    | 項目 | 概要 |
     | --- | --- |
-    | 概要 | users/add.htmlを表示する |
+    | URL | GET通信の `/users/add` |
+    | 処理内容 | `users/add.html`を表示する |
 2. 以下仕様で、ユーザー新規登録機能を実装しなさい。
 
     **UserController**
 
-    | URL | POST通信の /users/add |
+    | 項目 | 概要 |
     | --- | --- |
-    | 概要 | 1. usersテーブルに入力された値を追加する
-    2. /usersにリダイレクトする |
+    | URL | POST通信の `/users/add` |
+    | 処理内容 | 1. usersテーブルに入力された値を追加する<br>2. `/users`にリダイレクトする |
 
     **UserService**
 
-    | メソッド名 | saveUser |
+    | 項目 | 概要 |
     | --- | --- |
+    | メソッド名 | saveUser |
     | 引数 | Userオブジェクト |
-    | 概要 | 1. 引数で渡された値をusersテーブルに追加する。
-    2. 登録したオブジェクトを返却する |
+    | 処理内容 | 1. 引数で渡された値をusersテーブルに追加する。<br>2. 登録したオブジェクトを返却する |
 
-## 動作確認
+### 動作確認
 
 - URL `http://localhost:8080/users/add`でアクセスし、以下のようにusers/add.htmlが表示されることを確認する。
 
@@ -199,15 +202,17 @@ VALUES
 
     **usersとtasks**
 
-    | users | 1 |
+    | 項目 | 概要 |
     | --- | --- |
+    | users | 1 |
     | tasks | 多 |
     | 外部キー | user_id |
 
     **statusとtasks**
 
-    | status | 1 |
+    | 項目 | 概要 |
     | --- | --- |
+    | status | 1 |
     | tasks | 多 |
     | 外部キー | status_id |
 
@@ -227,16 +232,18 @@ VALUES
 
     **TaskControlller**
 
-    | URL | GET通信の /tasks |
+    | 項目 | 概要 |
     | --- | --- |
-    | 概要 | tasksテーブルの一覧データをtasks/list.htmlに表示する |
+    | URL | GET通信の `/tasks` |
+    | 処理内容 | tasksテーブルの一覧データを`tasks/list.html`に表示する |
 
     **TaskService**
 
-    | メソッド名 | findAllTasks |
+    | 項目 | 概要 |
     | --- | --- |
+    | メソッド名 | findAllTasks |
     | 引数 | なし |
-    | 概要 | tasksテーブルの全データを返却する |
+    | 処理内容 | tasksテーブルの全データを返却する |
 
     **TaskRepository**
 
@@ -266,28 +273,26 @@ VALUES
 
     **TaskController**
 
-    | URL | GET通信の /tasks/edit/{id} |
+    | 項目 | 概要 |
     | --- | --- |
-    | 概要 | 1. idで該当タスクを取得する
-    2. usersテーブルから一覧データを取得する
-    3. statusテーブルから一覧データを取得する
-    4. tasks/edit.htmlを表示する |
+    | URL | GET通信の `/tasks/edit/{id}` |
+    | 処理内容 | 1. idで該当タスクを取得する<br>2. usersテーブルから一覧データを取得する<br>3. statusテーブルから一覧データを取得する<br>4. `tasks/edit.html`を表示する |
 
     **TaskService**
 
-    | メソッド名 | findTaskById |
+    | 項目 | 概要 |
     | --- | --- |
+    | メソッド名 | findTaskById |
     | 引数 | 該当タスクのid |
-    | 概要 | 1. tasksテーブルから該当データを取得する。
-    2. 該当タスクが見つからない場合は、EntityNotFoundExceptionをスローする（メッセージは Task not found with id: {id}とする ）
-    3. 該当タスクを返却する |
+    | 処理内容 | 1. tasksテーブルから該当データを取得する。<br>2. 該当タスクが見つからない場合は、`EntityNotFoundException`をスローする（メッセージは `Task not found with id: {id}`とする ）<br>3. 該当タスクを返却する |
 
     **StatusService**
 
-    | メソッド名 | findAllStatus |
+    | 項目 | 概要 |
     | --- | --- |
+    | メソッド名 | findAllStatus |
     | 引数 | なし |
-    | 概要 | statusテーブルの全データを返却する |
+    | 処理内容 | statusテーブルの全データを返却する |
 
     **StatusRepository**
 
@@ -297,18 +302,18 @@ VALUES
 
     **TaskController**
 
-    | URL | POST通信の /tasks/edit |
+    | 項目 | 概要 |
     | --- | --- |
-    | 概要 | 1. 入力された値でtasksテーブルのデータを更新する
-    2. /tasksにリダイレクトする |
+    | URL | POST通信の `/tasks/edit` |
+    | 処理内容 | 1. 入力された値でtasksテーブルのデータを更新する<br>2. `/tasks`にリダイレクトする |
 
     **TaskService**
 
-    | メソッド名 | updateTask |
+    | 項目 | 概要 |
     | --- | --- |
+    | メソッド名 | updateTask |
     | 引数 | Taskオブジェクト |
-    | 概要 | 1. 引数で渡された値でtasksテーブルのデータを更新する。
-    2. 更新したオブジェクトを返却する |
+    | 処理内容 | 1. 引数で渡された値でtasksテーブルのデータを更新する。<br>2. 更新したオブジェクトを返却する |
 
 ### 動作確認
 
@@ -353,8 +358,9 @@ VALUES
 1. 以下仕様でタスクが論理削除できるようにしなさい。
 
 
-    | カラム名 | is_deleted |
+    | 項目 | 概要 |
     | --- | --- |
+    | カラム名 | is_deleted |
     | 初期値 | false |
 
     ※`is_deleted`カラムが追加されたことを確認したら、各データに `false`を入れておく
@@ -363,19 +369,18 @@ VALUES
 
     **TaskController**
 
-    | URL | GET通信の /tasks/delete/{id} |
+    | 項目 | 概要 |
     | --- | --- |
-    | 概要 | 1. idで該当タスクを取得する
-    2. タスクを削除する
-    2. /tasksにリダイレクトする |
+    | URL | GET通信の `/tasks/delete/{id}` |
+    | 処理内容 | 1. idで該当タスクを取得する<br>2. タスクを削除する<br>3. `/tasks`にリダイレクトする |
 
     **TaskService**
 
-    | メソッド名 | deleteTask |
+    | 項目 | 概要 |
     | --- | --- |
+    | メソッド名 | deleteTask |
     | 引数 | Taskオブジェクト |
-    | 概要 | 1. タスクを論理削除する
-    2. 削除したオブジェクトを返却する |
+    | 処理内容 | 1. タスクを論理削除する<br>2. 削除したオブジェクトを返却する |
 
 ### 動作確認
 
@@ -397,38 +402,27 @@ VALUES
 
 **TaskController**
 
-| URL | GET通信の /tasks/search |
+| 項目 | 概要 |
 | --- | --- |
-| クエリパラメーター | 以下は必須ではなく、初期値は不要なものとする
-- タスク名（name）
-- ステータスID（statusId）
-- 担当ユーザーID（userId） |
-| 概要 | 1. 入力されたクエリパラメータで、tasksテーブルからデータを取得する
-2. usersテーブルから一覧データを取得する
-3. statusテーブルから一覧データを取得する
-4. tasks/search.htmlを表示する |
+| URL | GET通信の `/tasks/search` |
+| クエリパラメーター | 以下は必須ではなく、初期値は不要なものとする<br>- タスク名（name）<br>- ステータスID（statusId）<br>- 担当ユーザーID（userId） |
+| 処理内容 | 1. 入力されたクエリパラメータで、tasksテーブルからデータを取得する<br>2. usersテーブルから一覧データを取得する<br>3. statusテーブルから一覧データを取得する<br>4. `tasks/search.html`を表示する |
 
 **TaskService**
 
-| メソッド名 | findTaskByParams |
+| 項目 | 概要 |
 | --- | --- |
-| 引数 | - 引数1：タスク名
-- 引数2：ステータスID
-- 引数3：担当ユーザーID |
-| 概要 | 1. 引数の値が全てnullなら、tasksテーブルから全データを取得し返却する
-2. 引数の値でtasksテーブルからデータを取得し、返却する |
+| メソッド名 | findTaskByParams |
+| 引数 | - 引数1：タスク名<br>- 引数2：ステータスID<br>- 引数3：担当ユーザーID |
+| 処理内容 | 1. 引数の値が全てnullなら、tasksテーブルから全データを取得し返却する<br>2. 引数の値でtasksテーブルからデータを取得し、返却する |
 
 **TaskRepository**
 
-| メソッド名 | findByParams |
+| 項目 | 概要 |
 | --- | --- |
-| 引数 | - 引数1：タスク名
-- 引数2：ステータスID
-- 引数3：担当ユーザーID |
-| 概要 | nameカラムと引数1の値が完全一致するデータ、
-またはstatus_idカラムと引数2の値が完全一致するデータ、
-またはuser_idカラムと引数3の値が完全一致するデータを
-tasksテーブルから取得する |
+| メソッド名 | findByParams |
+| 引数 | - 引数1：タスク名<br>- 引数2：ステータスID<br>- 引数3：担当ユーザーID |
+| 処理内容 | nameカラムと引数1の値が完全一致するデータ、<br>またはstatus_idカラムと引数2の値が完全一致するデータ、<br>またはuser_idカラムと引数3の値が完全一致するデータを<br>tasksテーブルから取得する |
 
 ### 動作確認
 
@@ -472,28 +466,27 @@ VALUES
 
     ※修正できたら、再実行して以下仕様通りのテーブルが作成されているかを確認すること。
 
-    | テーブル名 | task_label |
+    | 項目 | 概要 |
     | --- | --- |
+    | テーブル名 | task_label |
     | カラム1 | task_id |
     | カラム2 | label_id |
 2. 以下の仕様で、タスク新規登録画面を表示する機能を実装しなさい。
 
     **TaskController**
 
-    | URL | GET通信の /tasks/add |
+    | 項目 | 概要 |
     | --- | --- |
-    | 概要 | 1. Taskオブジェクトをadd.htmlで使えるようにする
-    2. usersテーブルから一覧データを取得する
-    3. statusテーブルから一覧データを取得する
-    4. labelsテーブルから一覧データを取得する
-    5. tasks/add.htmlを表示する |
+    | URL | GET通信の `/tasks/add` |
+    | 処理内容 | 1. Taskオブジェクトをadd.htmlで使えるようにする<br>1. usersテーブルから一覧データを取得する<br>2. statusテーブルから一覧データを取得する<br>3. labelsテーブルから一覧データを取得する<br>4. `tasks/add.html`を表示する |
 
     **LableService**
 
-    | メソッド名 | findAllLabels |
+    | 項目 | 概要 |
     | --- | --- |
+    | メソッド名 | findAllLabels |
     | 引数 | なし |
-    | 概要 | labelsテーブルの全データを返却する |
+    | 処理内容 | labelsテーブルの全データを返却する |
 
     **LabelRepository**
 
@@ -503,19 +496,18 @@ VALUES
 
     **TaskController**
 
-    | URL | POST通信の /tasks/add |
+    | 項目 | 概要 |
     | --- | --- |
-    | 概要 | 1. tasksテーブルに入力された値を追加する
-    2. /tasksにリダイレクトする |
+    | URL | POST通信の `/tasks/add` |
+    | 処理内容 | 1. tasksテーブルに入力された値を追加する<br>2. `/tasks`にリダイレクトする |
 
     **TaskService**
 
-    | メソッド名 | addTask |
+    | 項目 | 概要 |
     | --- | --- |
+    | メソッド名 | addTask |
     | 引数 | Taskオブジェクト, Labelのコレクション（Set） |
-    | 概要 | 1. 引数で渡された値をtasks・task_labelテーブルに追加する。
-    2. 登録したオブジェクトを返却する
-    ※複数のテーブルを扱うためトランザクションを用いること。 |
+    | 処理内容 | 1. 引数で渡された値をtasks・task_labelテーブルに追加する。<br>2. 登録したオブジェクトを返却する<br>※複数のテーブルを扱うためトランザクションを用いること。 |
 
 ### 動作確認
 
