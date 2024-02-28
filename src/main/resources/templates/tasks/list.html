@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja" th:replace="~{base :: layout(~{::title},~{::body/content()})}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>タスク一覧</title>
+</head>
+<body>
+    <h1>タスク一覧</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>タスク名</th>
+                <th>ステータス</th>
+                <th>担当ユーザー</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="task : ${tasks}">
+                <td th:text="${task.id}">ID</td>
+                <td th:text="${task.name}">ユーザー名</td>
+                <td th:text="${task.status.name}">ステータス名</td>
+                <td th:text="${task.user.name}">担当ユーザー</td>
+                <td>
+                    <a th:href="@{/tasks/edit/{id}(id=${task.id})}">編集</a>
+                    <a th:href="@{/tasks/delete/{id}(id=${task.id})}">削除</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <a href="/tasks/add">新しいタスクを追加</a>
+</body>
+</html>

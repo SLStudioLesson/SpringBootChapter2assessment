@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html th:fragment="layout (title,body)">
+<head>
+    <title th:replace="${title}">Task Management App</title>
+    <link href="/style.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container">
+        <div id="body" th:replace="${body}"></div>
+    </div>
+
+</body>
+</html>

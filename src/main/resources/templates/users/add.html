@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ja" th:replace="~{base :: layout(~{::title},~{::body/content()})}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ユーザー登録</title>
+</head>
+<body>
+    <h1>ユーザー登録</h1>
+    <form th:action="@{/users/add}" th:object="${user}" th:method="post">
+        <div>
+            <label>名前</label>
+            <input type="text" th:field="*{name}"/>
+        </div>
+        <p><button type="submit">登録</button></p>
+    </form>
+</body>
+</html>

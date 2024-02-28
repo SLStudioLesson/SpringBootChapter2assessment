@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja" th:replace="~{base :: layout(~{::title},~{::body/content()})}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>タスク一覧</title>
+</head>
+<body>
+    <h1>タスク検索</h1>
+    <form th:action="@{/tasks/search}" th:method="get">
+        <div>
+            <label>タスク名</label>
+            <input type="text" name="name"/>
+        </div>
+        <div>
+            <label>ステータス</label>
+            <select name="statusId">
+                <option value="">未入力</option>
+                <option th:each="status : ${statusList}"
+                    th:value="${status.id}"
+                    th:text="${status.name}">ステータス名</option>
+            </select>
+        </div>
+        <div>
+            <label>担当ユーザー</label>
+            <select name="userId">
+                <option value="">未入力</option>
+                <option th:each="user : ${users}"
+                    th:value="${user.id}"
+                    th:text="${user.name}">ユーザー名</option>
+            </select>
+        </div>
+        <p><button type="submit">検索</button></p>
+    </form>
+    <h1>検索結果</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>タスク名</th>
+                <th>ステータス</th>
+                <th>担当ユーザー</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="task : ${tasks}">
+                <td th:text="${task.id}">ID</td>
+                <td th:text="${task.name}">ユーザー名</td>
+                <td th:text="${task.status.name}">ステータス名</td>
+                <td th:text="${task.user.name}">担当ユーザー</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

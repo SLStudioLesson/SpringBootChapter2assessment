@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja" th:replace="~{base :: layout(~{::title},~{::body/content()})}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>タスク登録</title>
+</head>
+<body>
+    <h1>タスク登録</h1>
+
+    <form th:action="@{/tasks/add}" th:object="${task}" th:method="post">
+        <div>
+            <label>名前</label>
+            <input type="text" th:field="*{name}"/>
+        </div>
+        <div>
+            <label>担当ユーザー</label>
+            <select th:field="*{user.id}">
+                <option th:each="user : ${users}"
+                    th:value="${user.id}"
+                    th:text="${user.name}">ユーザー名</option>
+            </select>
+        </div>
+        <div>
+            <label>ステータス</label>
+            <select th:field="*{status.id}">
+                <option th:each="status : ${statusList}"
+                    th:value="${status.id}"
+                    th:text="${status.name}">ステータス名</option>
+            </select>
+        </div>
+        <div>
+            <label>ラベル</label>
+            <th:block th:each="label : ${labels}">
+                <input type="checkbox" th:field="*{labels}" th:value="${label.id}">
+                <span th:text="${label.name}"></span>
+            </th:block>
+        </div>
+
+        <p><button type="submit">登録</button></p>
+    </form>
+</body>
+</html>
