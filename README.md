@@ -340,8 +340,8 @@ VALUES
 
     ```
     name：task2Edit
-    status_id：3
-    user_id：3
+    status_id：2
+    user_id：4
     ```
 
 
