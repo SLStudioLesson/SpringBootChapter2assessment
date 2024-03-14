@@ -28,6 +28,8 @@ public class TaskRepositoryTest {
 
     @BeforeEach
     void setup() throws Exception {
+        resetDB();
+
         Status status1 = new Status();
         status1.setName("status1");
         Status status2 = new Status();
@@ -72,6 +74,10 @@ public class TaskRepositoryTest {
 
     @AfterEach
     void setDown() throws Exception {
+        resetDB();
+    }
+
+    private void resetDB() {
         em.getEntityManager().createNativeQuery("SET REFERENTIAL_INTEGRITY FALSE").executeUpdate();
         em.getEntityManager().createNativeQuery("TRUNCATE TABLE task_label RESTART IDENTITY").executeUpdate();
         em.getEntityManager().createNativeQuery("TRUNCATE TABLE labels RESTART IDENTITY").executeUpdate();
